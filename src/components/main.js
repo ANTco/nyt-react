@@ -8,7 +8,7 @@ import Results from './children/Results';
 import Saved from './children/Saved';
 
 //helper function
-import facilitator from './utils/facilitator';
+import facilitator from  './utils/facilitator'
 
 //import './index.css';
 import App from './App';
@@ -63,7 +63,7 @@ const Main = React.createClass({
         },
 
         savedArticles(title, date, url) {
-            helpers.postArticle(title, data, url)
+            facilitator.postArticle(title, data, url)
             console.log("saved articles")
             console.log(this.state.savedArticles)
             this.getArticle()
@@ -75,7 +75,7 @@ const Main = React.createClass({
         if(prevState.topic !=this.state.topic || prevState.startYear !== this.state.startYear || prevState.endYear !== this.state.endYear) {
             console.log("UPDATED");
 
-            helpers.runQuery(this.state.topic, this.state.startYear, this.state.endYear)
+            facilitator.runQuery(this.state.topic, this.state.startYear, this.state.endYear)
                 .then(data => {
                     console.log(data);
                     if (data !== this.state.results) 
