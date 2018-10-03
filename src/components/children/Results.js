@@ -1,8 +1,8 @@
 import React from 'react'
 
-const Results = React.createClass({
+function Results (){
 
-    render() {
+  
 
         return(
 
@@ -14,7 +14,7 @@ const Results = React.createClass({
             </div>
         )
 
-    }
-});
+    
+};
 
 export default Results;

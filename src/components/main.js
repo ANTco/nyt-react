@@ -11,25 +11,23 @@ import Saved from './children/Saved';
 import facilitator from  './utils/facilitator'
 
 //import './index.css';
-import App from './App';
-import registerServiceWorker from './registerServiceWorker';
-
-ReactDOM.render(<App />, document.getElementById('root'));
-registerServiceWorker();
 
 
-const Main = React.createClass({
+
+
+class Main extends React.Component {
 
     //generic state ass. w/# of clicks
-    getInitialState() {
-        return {
+    constructor(props) {
+        super(props);
+    this.state = {
             topic: "",
             startYear: "",
             endYear: "",
             results: [],
             savedArticles: [],
         }
-    },
+    }
     
     //this function allows children to update the parent w/searchTerms
         setTerm(tpc, stYr, endYr) {
@@ -38,7 +36,7 @@ const Main = React.createClass({
                 startYear: stYr,
                 endYead: endYr
             })
-        },
+        }
 
         deleteArticles(article) {
             console.log(article);
@@ -51,7 +49,7 @@ const Main = React.createClass({
                 });
 
                 this.getArticle();
-            },
+            }
 
         getArticle() {
             axios.get('/api/saved')
@@ -60,17 +58,17 @@ const Main = React.createClass({
                         savedArticles: response.data
                     });
                 });
-        },
+        }
 
-        savedArticles(title, date, url) {
+        savedArticles(title, data, url) {
             facilitator.postArticle(title, data, url)
             console.log("saved articles")
             console.log(this.state.savedArticles)
             this.getArticle()
-        },
+        }
 
         //if component updates run this code
-    componentDidUpdate(prevProps, preState) {
+    componentDidUpdate(prevProps, prevState) {
 
         if(prevState.topic !=this.state.topic || prevState.startYear !== this.state.startYear || prevState.endYear !== this.state.endYear) {
             console.log("UPDATED");
@@ -87,13 +85,13 @@ const Main = React.createClass({
                     console.log(this.state.results)
                 })
         }
-    },
+    }
 
     componentDidMount() {
         console.log("saved")
         console.log(this.state. savedArticles)
         this.getArticle()
-    },
+    }
 
     //here we render the function
 
@@ -128,6 +126,6 @@ const Main = React.createClass({
         )
     }
 
-});
+};
 
 export default Main;

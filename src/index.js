@@ -4,8 +4,8 @@ import axios from 'axios';
 
 import Form from '.'
 import './index.css';
-import App from './App';
+import Main from './components/main';
 import registerServiceWorker from './registerServiceWorker';
 
-ReactDOM.render(<App />, document.getElementById('root'));
+ReactDOM.render(<Main />, document.getElementById('root'));
 registerServiceWorker();
