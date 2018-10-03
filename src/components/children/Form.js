@@ -16,6 +16,7 @@ class Form extends React.Component {
         console.log(this.state.topic);
 
     }
+    
     submit(){
         /// you are going to take info from state
         //create an obj
