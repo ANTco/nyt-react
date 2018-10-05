@@ -8,8 +8,8 @@ class Saved extends React.Component {
         this.state = {}
     }
     //the delete function is expecting an object as argument
-    clickToDelete(i) {
-
+    clickToDelete =(i)  => {
+        console.log(i);
         this.props.deleteArticles(this.props.SavedArticles[i])
         }
 
@@ -25,9 +25,9 @@ class Saved extends React.Component {
                     </div>
                     <div className="panel-body">
                     { 
-                        that.props.SavedArticles ?
+                        this.props.SavedArticles ?
 
-                            that.props.SavedArticles.map((obj, i) =>{
+                            this.props.SavedArticles.map((obj, i) =>{
 
                                 <div className="saved-items" key={i}>
                                 <a href={obj.url} target="_blank">{obj.title}</a>
@@ -35,7 +35,7 @@ class Saved extends React.Component {
                                 {obj.date}
                                 <br />
                                 <button type="button" className="btn btn-warning" style={{'float': 'right', 'marginTop': '-39px'}}
-                                onClick={that.clickToDelete.bind(that, i)}>
+                                onClick={ () => this.clickToDelete(i)}>
                                 Delete
                                 </button>
                                 </div>
